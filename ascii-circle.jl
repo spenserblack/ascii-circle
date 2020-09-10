@@ -10,7 +10,7 @@ origin = (h//2, w//2)
 x_origin, y_origin = origin
 
 is_in_circle(x::Int, y::Int) = begin
-  d = √((x_origin - x)^2 + (y_origin - y)^2)
+  d = √(((x_origin - x)^2)*2 + (y_origin - y)^2)
   d ≤ r
 end
 
