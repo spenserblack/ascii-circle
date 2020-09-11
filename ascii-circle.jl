@@ -12,8 +12,9 @@ origin = (h//2, w//2)
 x_origin, y_origin = origin
 
 get_char(x::Number, y::Number) = begin
-  d = √(((x_origin - x)//wh_ratio)^2 + (y_origin - y)^2)
+  d = √((x_origin - x)^2 + ((y_origin - y) * wh_ratio)^2)
   d = Int(floor(d))
+  d = d + 1 # treat distance as slightly larger for better edge rendering
   if d < r
     'o'
   elseif d == r
