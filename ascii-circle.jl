@@ -4,13 +4,15 @@ r = try
     error("First arg is required and must be an integer")
 end
 
+wh_ratio = 8//15 # a guess
+
 h = 2r
-w = 2h # width is double height due to size of monospace characters
+w = h // wh_ratio
 origin = (h//2, w//2)
 x_origin, y_origin = origin
 
-is_in_circle(x::Int, y::Int) = begin
-  d = √(((x_origin - x)^2)*3.5 + (y_origin - y)^2)
+is_in_circle(x::Number, y::Number) = begin
+  d = √(((x_origin - x)//wh_ratio)^2 + (y_origin - y)^2)
   d ≤ r
 end
 
@@ -19,7 +21,7 @@ for x = 1:h
     if is_in_circle(x, y)
       print('o')
     else
-      print(' ')
+      print('.')
     end
   end
   println()
